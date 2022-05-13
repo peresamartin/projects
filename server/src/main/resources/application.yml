@@ -1,0 +1,90 @@
+debug: false
+
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+  compression:
+    enabled: false
+  error:
+    #Nem küld konkrét hibaüzenetet (például: a 15. sorban van hiba)
+    include-exception: false
+    #Ne adjon vissza alapértelmezett hibaüzenetet
+    include-binding-errors: never
+    #Ne adjon vissza részletes hibaüzenetet
+    include-stacktrace: never
+    #Ne adjon vissza exception üzenetet
+    include-message: never
+  #http verzió
+  http2:
+    enabled: true #
+  max-http-header-size: 1024KB
+  servlet:
+    #cim után gyökér elérési útvonal
+    context-path: /
+
+spring:
+  main:
+    #konzolba tegye a bannert
+    banner-mode: console
+    lazy-initialization: false
+    log-startup-info: true
+
+  banner:
+    charset: UTF-8
+
+  application:
+    name: "server"
+    #admin konzol
+    admin:
+      enabled: false
+  #statisztika
+  jmx:
+    enabled: false
+
+
+  data:
+    jpa:
+      repositories:
+        enabled: true
+        bootstrap-mode: default
+    web:
+      pageable:
+        default-page-size: 25
+        max-page-size: 100
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/maintenance
+
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      show-sql: true
+      format_sql: true
+      hbm2dll:
+        auto: none
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      jdbc:
+        lob:
+          non_contextual_creation: true
+  mvc:
+    format:
+      date: yyyy-MM-dd
+
+logging:
+  charset:
+    console: UTF-8
+    file: UTF-8
+  file:
+    name: ./logs/Server.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: false
+      max-file-size: 10MB
+      max-history: 7
