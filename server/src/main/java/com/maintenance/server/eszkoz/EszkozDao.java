@@ -67,4 +67,9 @@ public class EszkozDao {
     {
         return this.eszkozrepository.getAllEszkozWithKategoria();
     }
+
+    public void updateperiod()
+    {
+        this.eszkozrepository.updateperiod();
+    }
 }

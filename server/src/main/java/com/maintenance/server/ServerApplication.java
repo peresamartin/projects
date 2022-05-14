@@ -14,10 +14,6 @@ public class ServerApplication {
 	}
 
 
-	@Scheduled(fixedDelay = 1000L)
-	public void update()
-	{
 
-	}
 
 }

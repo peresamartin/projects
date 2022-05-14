@@ -3,6 +3,7 @@ package com.maintenance.server.eszkoz;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Data
 @RestController
+@EnableScheduling
 @RequestMapping("/Eszkoz")
 public class EszkozController {
 
@@ -67,6 +69,12 @@ public class EszkozController {
     public List<String> getAllEszkozWithKategoria()
     {
         return this.eszkozDao.getAllEszkozWithKategoria();
+    }
+
+    @Scheduled(fixedDelay = 86400000L)
+    public void update()
+    {
+        this.eszkozDao.updateperiod();
     }
 
 }
